@@ -1,0 +1,31 @@
+
+/* ============================================= fixed right panel ============================================= */
+.fixed_right_panel { position:fixed;!important position:absolute; top:; right:0; opacity:0.9; filter: alpha(opacity = 70); height:720px; z-index:1150; }
+.show_right_div { cursor:pointer; height:100%; width:20px; color:#FFF; float:right; opacity:1; -moz-border-radius-bottomleft:6px; -moz-border-radius-topleft:6px; -webkit-border-bottom-left-radius:6px; -webkit-border-top-left-radius:6px; border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hidden_right_div { background:#000; float:right; display:none; height:100%; color:#FFF; width:1320px;opacity:1; }
+
+.fixed_right_panel a, .fixed_right_panel a:visited { color:#FFF; text-decoration:none; }
+.fixed_right_panel a:hover { color:#ccc; }
+
+.date { background:url(calendar.png) no-repeat; padding:0 0 0 20px; margin:4px 6px; }
+.time { background:url(clock.png) no-repeat; padding:0 0 0 20px; margin:4px 10px; }
+.all_appointments { background:url(all_appointments.png) no-repeat; padding:0 0 0 20px; margin:4px 0; }
+.today_appointments { background:url(today_appointments.png) no-repeat; padding:0 0 0 20px; margin:4px 0; }
+
+/* ============================================= left and right arrow ============================================= */
+.left_arrow { background:url(left_arrow.png) no-repeat center #000; }
+.show_right_div:hover { padding:0 2px; }
+.right_arrow { background:url(right_arrow.png) no-repeat center #000; }
+.show_left_div:hover { padding:0 2px; }
+.up_arrow { background:url(up_arrow.png) no-repeat center #000; }
+#top_menu_button:hover { padding:2px 0; }
+.down_arrow { background:url(down_arrow.png) no-repeat center #000; }
+/* ============================================= boxes ============================================= */
+a.box { display: block; padding: 12px 12px 12px 52px; color: #333; text-decoration: none; margin: 20px 0; }	
+a.box:hover { color: #000; text-decoration:none; }
+.close { width: 9px; height: 9px; float: right; background: url("close_box.png") no-repeat left top; margin: 6px 0; }
+.close:hover { background: url("close_box.png") no-repeat left bottom; }
+.succes { border: 1px solid #b3dc7c; background: url("success.png") no-repeat 10px 50% #e8ffca; }
+.error { border: 1px solid #ebb1b1; background: url("error.png") no-repeat 10px 50% #ffd6d6; }
+.warning { border: 1px solid #efdc75; background: url("warning.png") no-repeat 10px 50% #fff7cb; }
+.info { border: 1px solid #afdbee; background: url("info.png") no-repeat 10px 50% #e4f5fd; }

@@ -1,0 +1,7 @@
+	<script>
+		var auto_refresh = setInterval(
+		function()
+		{	
+			$('#data').fadeOut('slow').load('absen_fp/proses_fp.php').fadeIn("slow");
+		}, 5000);
+	</script>

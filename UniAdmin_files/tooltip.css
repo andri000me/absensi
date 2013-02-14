@@ -1,0 +1,26 @@
+
+
+#tooltip-click {
+  width:400px;
+  position:absolute;
+  top:10px;
+  left:10px;
+  z-index:999;
+  background-color:#e1e1e6;
+  border:5px solid #828282;
+
+  padding:10px 15px;
+  font:normal 13px/18px Arial,Sans-Serif;
+  color:black;
+  text-align:left;
+  display:none;
+}
+
+#tooltip-click h2 {
+  margin:0px 0px 10px;
+  font-size:18px;
+}
+.nama_toolchart:hover{
+text-decoration: underline;
+}
+

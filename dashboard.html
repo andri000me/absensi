@@ -1,0 +1,766 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- Source is http://demo.zmeutz.com/admin_panelz/dashboard.html -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Admin Panelz - Dashboard</title>
+
+<!-- start styles css -->
+
+<link type="text/css" href="dashboard_files/jquery.ui.all.css" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" href="dashboard_files/adminz.styles.css" />
+<link type="text/css" rel="stylesheet" href="dashboard_files/grey.styles.css" />
+<link rel="stylesheet" href="dashboard_files/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+<link rel="stylesheet" href="dashboard_files/table.styles.css" type="text/css" media="print, projection, screen" />
+ <!-- begin chart styles -->
+ <link href="dashboard_files/visualize.css" type="text/css" rel="stylesheet" />	
+ <link href="dashboard_files/visualize-light.css" type="text/css" rel="stylesheet" /><!-- end chart css -->
+
+ <link rel="stylesheet" href="dashboard_files/jquery.wysiwyg.css" type="text/css" />
+ <link rel="stylesheet" type="text/css" media="all" href="dashboard_files/jquery.selectbox.css" />
+ 
+<!--[if IE 8]>
+<link type="text/css" rel="stylesheet" href="dashboard_files/ie8.css" />
+<![endif]-->
+<!--[if IE 7]>
+<link type="text/css" rel="stylesheet" href="dashboard_files/ie7.css" />
+<![endif]-->
+<!-- end styles css -->
+
+<!-- begin javascripts -->
+ <script language="javascript" src="dashboard_files/jquery.min.js" type="text/javascript"></script>
+ <script src="dashboard_files/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+ <script type="text/javascript" src="dashboard_files/jquery.ui.core.js"></script>
+ <script type="text/javascript" src="dashboard_files/jquery.ui.widget.js"></script>
+ <script type="text/javascript" src="dashboard_files/jquery.ui.mouse.js"></script>
+ <script type="text/javascript" src="dashboard_files/jquery.ui.sortable.js"></script>
+ <script type="text/javascript" src="dashboard_files/jquery.tablesorter.min.js"></script>
+ <!-- begin tabs scripts -->
+ <script type="text/javascript" src="dashboard_files/chili-1.8b.js"></script>
+ <script type="text/javascript" src="dashboard_files/jquery.cookie.js"></script>
+ <script type="text/javascript" src="dashboard_files/jquery.ui.tabs.js"></script><!-- end tabs scripts -->
+
+ <!-- begin chart scripts -->
+ <script type="text/javascript" src="dashboard_files/excanvas.js"></script>	
+ <script type="text/javascript" src="dashboard_files/visualize.jquery.js"></script><!-- end chart scripts -->
+ 
+ <script type="text/javascript" src="dashboard_files/jquery.wysiwyg.js"></script>
+ <script type="text/javascript" src="dashboard_files/jquery.selectbox-0.6.1.js"></script>
+ <script type="text/javascript" src="dashboard_files/jquery.ui.datepicker.js"></script>
+ <script type="text/javascript" src="dashboard_files/jquery.ui.progressbar.js"></script>
+ <script type="text/javascript" src="dashboard_files/jquery.ui.slider.js"></script>
+ <script type="text/javascript" src="dashboard_files/jquery.scrollbar.js"></script>
+ <script type="text/javascript" src="dashboard_files/jquery.custom.js"></script>
+ 	<script type="text/javascript">
+//subnav top menu
+$(document).ready(function(){
+						   
+	$("#top_menu_content li a").hover(function() { //When trigger is clicked...
+		
+		//Following events are applied to the subnav itself (moving subnav up and down)
+		$(this).parent().find("ul.subnav").slideDown('fast').show(); //Drop down the subnav on click
+
+		$(this).parent().hover(function() {
+		}, function(){	
+			$(this).parent().find("ul.subnav").slideUp('slow'); //When the mouse hovers out of the subnav, move it back up
+		});
+
+		//Following events are applied to the trigger (Hover events for the trigger)
+		}).hover(function() { 
+			$(this).addClass("subhover");//On hover over, add class "subhover"
+		}, function(){	//On Hover Out
+			$(this).removeClass("subhover");//On hover out, remove class "subhover"
+	});
+
+});
+	$(function() {
+		$("#tabs").tabs({
+			cookie: {
+				// store cookie for a day, without, it would be a session cookie
+				expires: 1
+			}
+		});
+	});
+	</script><!-- end javascripts -->
+    
+</head>
+
+<body>
+<!-- start top menu -->
+<div id="top_menu">
+<div id="top_menu_content">
+
+<!-- start logo -->
+<img src="dashboard_files/logo.png" width="160" height="42" alt="adminz" class="float_left margin_10_0" /><!-- end logo -->
+
+<!-- start menu -->
+<ul>
+  <li class="current"><a href="dashboard.html">Dashboard</a>
+    <ul class="subnav">
+	<li><a href="#tables">Tables</a></li>
+	<li><a href="forms.html">Forms</a></li>
+	<li><a href="#info_boxes">Info Boxes</a></li>
+    <li><a href="#images_panel">Images</a></li>
+  </ul></li>
+<li><a href="forms.html">Forms</a></li>
+<li><a href="#forms">Users</a></li>
+<li><a href="#info_boxes">Media</a></li>
+<li><a href="#images_panel">Settings</a>
+    <ul class="subnav">
+	<li><a href="blue-dashboard.html">Blue</a></li>
+	<li><a href="green-dashboard.html">Green</a></li>
+	<li><a href="red-dashboard.html">Red</a></li>
+    <li><a href="orange-dashboard.html">Orange</a></li>
+    <li><a href="dashboard.html">Grey</a></li>
+  </ul></li>
+<li><a href="#tables">Help</a></li>
+</ul><!-- end menu -->
+
+<div class="float_right margin_0_20">
+	<a href="dashboard.html"><img src="dashboard_files/settings.png" width="24" height="24" alt="settings" /></a><br />
+	<a href="index.html"><img src="dashboard_files/logout.png" width="24" height="24" alt="logout" /></a></div>
+		<div id="top_menu_info">
+			<img src="dashboard_files/avatar.png" width="32" height="32" alt="avatar" /><br />
+			Hello, Stefan</div>
+		</div>
+	<div id="top_menu_button" class="down_arrow corners_bottom">&nbsp;</div>
+</div><!-- end top menu -->
+
+<!-- start container -->
+<div class="container">
+
+<!-- start column -->
+<div class="column">
+
+	<!-- start statistics panel -->
+	<div class="panel corners">
+
+		<!-- start tabs div title -->
+        <div id="tabs">
+        <!-- start title -->
+		<div class="title corners_top"><h6 style="float:left;">Statistics</h6><ul style="float:right;">
+		<li><a href="#tabs-1">Line</a></li>
+		<li><a href="#tabs-2">Area</a></li>
+		<li><a href="#tabs-3">Bar</a></li>
+        <li><a href="#tabs-4">Pie</a></li>
+	</ul></div><!-- end title -->
+		<div class="content">
+	
+	<div id="tabs-1">
+<table class="chart nodisplay" id="line">
+	<thead>
+		<tr>
+			<td></td>
+			<th scope="col">Jan</th>
+			<th scope="col">Feb</th>
+			<th scope="col">Mar</th>
+			<th scope="col">Apr</th>
+			<th scope="col">May</th>
+			<th scope="col">Jun</th>
+            <th scope="col">Jul</th>
+            <th scope="col">Aug</th>
+            <th scope="col">Sep</th>
+            <th scope="col">Oct</th>
+            <th scope="col">Nov</th>
+            <th scope="col">Dec</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th scope="row">visitors</th>
+			<td>290</td>
+			<td>360</td>
+			<td>432</td>
+			<td>560</td>
+			<td>620</td>
+			<td>750</td>
+            <td>650</td>
+            <td>750</td>
+            <td>820</td>
+            <td>930</td>
+            <td>840</td>
+            <td>830</td>
+		</tr>
+        <tr>
+			<th scope="row">unique visitors</th>
+			<td>230</td>
+			<td>280</td>
+			<td>322</td>
+			<td>380</td>
+			<td>430</td>
+			<td>580</td>
+            <td>610</td>
+            <td>630</td>
+            <td>720</td>
+            <td>730</td>
+            <td>760</td>
+            <td>720</td>
+		</tr>
+		<tr>
+			<th scope="row">sales</th>
+			<td>190</td>
+			<td>260</td>
+			<td>332</td>
+			<td>450</td>
+			<td>550</td>
+			<td>650</td>
+            <td>750</td>
+            <td>760</td>
+            <td>750</td>
+            <td>740</td>
+            <td>700</td>
+            <td>630</td>
+		</tr>		
+	</tbody>
+</table>	
+	</div>
+	<div id="tabs-2">
+<table class="chart nodisplay" id="area">
+	<thead>
+		<tr>
+			<td></td>
+			<th scope="col">Jan</th>
+			<th scope="col">Feb</th>
+			<th scope="col">Mar</th>
+			<th scope="col">Apr</th>
+			<th scope="col">May</th>
+			<th scope="col">Jun</th>
+            <th scope="col">Jul</th>
+            <th scope="col">Aug</th>
+            <th scope="col">Sep</th>
+            <th scope="col">Oct</th>
+            <th scope="col">Nov</th>
+            <th scope="col">Dec</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th scope="row">visitors</th>
+			<td>290</td>
+			<td>360</td>
+			<td>432</td>
+			<td>560</td>
+			<td>620</td>
+			<td>750</td>
+            <td>650</td>
+            <td>750</td>
+            <td>820</td>
+            <td>930</td>
+            <td>840</td>
+            <td>830</td>
+		</tr>
+        <tr>
+			<th scope="row">unique visitors</th>
+			<td>230</td>
+			<td>280</td>
+			<td>322</td>
+			<td>380</td>
+			<td>430</td>
+			<td>580</td>
+            <td>610</td>
+            <td>630</td>
+            <td>720</td>
+            <td>730</td>
+            <td>760</td>
+            <td>720</td>
+		</tr>
+		<tr>
+			<th scope="row">sales</th>
+			<td>190</td>
+			<td>260</td>
+			<td>332</td>
+			<td>450</td>
+			<td>550</td>
+			<td>650</td>
+            <td>750</td>
+            <td>760</td>
+            <td>750</td>
+            <td>740</td>
+            <td>700</td>
+            <td>630</td>
+		</tr>		
+	</tbody>
+</table></div>
+	<div id="tabs-3">
+<table class="chart nodisplay" id="bar">
+	<thead>
+		<tr>
+			<td></td>
+			<th scope="col">Jan</th>
+			<th scope="col">Feb</th>
+			<th scope="col">Mar</th>
+			<th scope="col">Apr</th>
+			<th scope="col">May</th>
+			<th scope="col">Jun</th>
+            <th scope="col">Jul</th>
+            <th scope="col">Aug</th>
+            <th scope="col">Sep</th>
+            <th scope="col">Oct</th>
+            <th scope="col">Nov</th>
+            <th scope="col">Dec</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th scope="row">visitors</th>
+			<td>290</td>
+			<td>360</td>
+			<td>432</td>
+			<td>560</td>
+			<td>620</td>
+			<td>750</td>
+            <td>650</td>
+            <td>750</td>
+            <td>820</td>
+            <td>930</td>
+            <td>840</td>
+            <td>830</td>
+		</tr>
+        <tr>
+			<th scope="row">unique visitors</th>
+			<td>230</td>
+			<td>280</td>
+			<td>322</td>
+			<td>380</td>
+			<td>430</td>
+			<td>580</td>
+            <td>610</td>
+            <td>630</td>
+            <td>720</td>
+            <td>730</td>
+            <td>760</td>
+            <td>720</td>
+		</tr>
+		<tr>
+			<th scope="row">sales</th>
+			<td>190</td>
+			<td>260</td>
+			<td>332</td>
+			<td>450</td>
+			<td>550</td>
+			<td>650</td>
+            <td>750</td>
+            <td>760</td>
+            <td>750</td>
+            <td>740</td>
+            <td>700</td>
+            <td>630</td>
+		</tr>		
+	</tbody>
+</table></div>
+	<div id="tabs-4">
+<table class="chart nodisplay" id="pie">
+	<thead>
+		<tr>
+			<td></td>
+			<th scope="col">Jan</th>
+			<th scope="col">Feb</th>
+			<th scope="col">Mar</th>
+			<th scope="col">Apr</th>
+			<th scope="col">May</th>
+			<th scope="col">Jun</th>
+            <th scope="col">Jul</th>
+            <th scope="col">Aug</th>
+            <th scope="col">Sep</th>
+            <th scope="col">Oct</th>
+            <th scope="col">Nov</th>
+            <th scope="col">Dec</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th scope="row">visitors</th>
+			<td>290</td>
+			<td>360</td>
+			<td>432</td>
+			<td>560</td>
+			<td>620</td>
+			<td>750</td>
+            <td>650</td>
+            <td>750</td>
+            <td>820</td>
+            <td>930</td>
+            <td>840</td>
+            <td>830</td>
+		</tr>
+        <tr>
+			<th scope="row">unique visitors</th>
+			<td>230</td>
+			<td>280</td>
+			<td>322</td>
+			<td>380</td>
+			<td>430</td>
+			<td>580</td>
+            <td>610</td>
+            <td>630</td>
+            <td>720</td>
+            <td>730</td>
+            <td>760</td>
+            <td>720</td>
+		</tr>
+		<tr>
+			<th scope="row">sales</th>
+			<td>190</td>
+			<td>260</td>
+			<td>332</td>
+			<td>450</td>
+			<td>550</td>
+			<td>650</td>
+            <td>750</td>
+            <td>760</td>
+            <td>750</td>
+            <td>740</td>
+            <td>700</td>
+            <td>630</td>
+		</tr>		
+	</tbody>
+</table></div>
+</div><!-- end tabs div -->
+
+</div><!-- end content -->
+
+	</div><!-- end statistics panel -->
+    
+	<!-- start table panel -->
+	<div class="panel corners">
+
+		<!-- start title -->
+		<div class="title corners_top"><h6 id="tables">Table</h6></div><!-- end title -->
+		<div class="content"><table cellspacing="1" class="tablesorter">
+		<thead>
+				<tr>
+					<th><input type="checkbox" name="checkall" id="checkall" /></th>
+                    <th>Article</th>
+					<th>Category</th>
+					<th>Author</th>
+					<th>Status</th>
+					<th>Created</th>
+					<th>Actions</th>
+	
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="checkbox" name="checkbox1" id="checkbox1" /></td>
+                    <td>News</td>
+					<td>Tutorials</td>
+					<td>Peter</td>
+					<td>Pending</td>
+                    <td>Jul 6, 2010 8:14 AM</td>
+					<td><a href="javascript:();"><img src="dashboard_files/zoom.png" width="16" height="16" alt="preview" title="preview" /></a>
+                    <a href="javascript:();"><img src="dashboard_files/edit.png" width="16" height="16" alt="edit" title="edit" /></a> 
+                    <a href="javascript:();"><img src="dashboard_files/delete.png" width="16" height="16" alt="delete" title="delete" /></a></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox2" id="checkbox2" /></td>
+                    <td>Proin vitae ipsum lorem, sed egestas mi.</td>
+					<td>FAQs</td>
+					<td>Stefan</td>
+					<td>Pending</td>
+                    <td>Dec 10, 2009 5:14 AM</td>
+					<td><a href="javascript:();"><img src="dashboard_files/zoom.png" width="16" height="16" alt="preview" title="preview" /></a>
+                    <a href="javascript:();"><img src="dashboard_files/edit.png" width="16" height="16" alt="edit" title="edit" /></a> 
+                    <a href="javascript:();"><img src="dashboard_files/delete.png" width="16" height="16" alt="delete" title="delete" /></a></td>
+					
+					
+				</tr>
+				<tr>
+                    <td><input type="checkbox" name="checkbox3" id="checkbox3" /></td>
+                    <td>Lorem ipsum dolor sit amet consectetur.</td>
+					<td>Tutorials</td>
+					<td>Clark</td>
+					<td>Published</td>
+                    <td>Jan 12, 2010 11:14 AM</td>
+					<td><a href="javascript:();"><img src="dashboard_files/zoom.png" width="16" height="16" alt="preview" title="preview" /></a>
+                    <a href="javascript:();"><img src="dashboard_files/edit.png" width="16" height="16" alt="edit" title="edit" /></a> 
+                    <a href="javascript:();"><img src="dashboard_files/delete.png" width="16" height="16" alt="delete" title="delete" /></a></td>
+					
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox4" id="checkbox4" /></td>
+                    <td>Vestibulum mattis ipsum ac purus vulputate.</td>
+					<td>News</td>
+					<td>Bruce</td>
+					<td>On Hold</td>
+                    <td>Jan 18, 2010 9:12 AM</td>
+					<td><a href="javascript:();"><img src="dashboard_files/zoom.png" width="16" height="16" alt="preview" title="preview" /></a>
+                    <a href="javascript:();"><img src="dashboard_files/edit.png" width="16" height="16" alt="edit" title="edit" /></a> 
+                    <a href="javascript:();"><img src="dashboard_files/delete.png" width="16" height="16" alt="delete" title="delete" /></a></td>
+					
+					
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="checkbox5" id="checkbox5" /></td>
+                    <td>Nulla facilisi. In hac habitasse platea dictumst.</td>
+					<td>FAQs</td>
+					<td>Evans</td>
+					<td>Published</td>
+                    <td>Jan 18, 2010 9:12 AM</td>
+					<td><a href="javascript:();"><img src="dashboard_files/zoom.png" width="16" height="16" alt="preview" title="preview" /></a>
+                    <a href="javascript:();"><img src="dashboard_files/edit.png" width="16" height="16" alt="edit" title="edit" /></a> 
+                    <a href="javascript:();"><img src="dashboard_files/delete.png" width="16" height="16" alt="delete" title="delete" /></a></td>
+					
+				</tr>
+			</tbody>
+		</table>
+        <div class="float_left margin_10_0">
+			<a href="javascript:();"><img src="dashboard_files/edit.png" width="16" height="16" alt="edit" /></a> 
+        	<a href="javascript:();"><img src="dashboard_files/delete.png" width="16" height="16" alt="delete" /></a></div>
+        <div class="pagination float_right margin_10_0">
+        	<a href="javascript:();">&laquo;</a> 
+            <a href="javascript:();" class="active">1</a> 
+            <a href="javascript:();">2</a> 
+            <a href="javascript:();">3</a> 
+            <a href="javascript:();">4</a> 
+            <a href="javascript:();">5</a> ... 
+            <a href="javascript:();">25</a> 
+            <a href="javascript:();">&raquo;</a></div>
+        </div><!-- end title -->
+	</div><!-- end table panel -->
+
+</div><!-- end column -->
+
+<!-- start column -->
+<div class="column" style=" float:left; width:49%;">
+	<!-- start forms panel -->
+	<div class="panel corners">
+    	<!-- start title -->
+		<div class="title corners_top"><h6>Panel Left</h6></div><!-- end title -->
+        <!-- start content -->
+		<div class="content">
+          <label>some text here: </label>
+          <input name="text" type="text" class="large_input corners" /><br />
+          <label>your message: </label>
+          <textarea name="text" cols="5" rows="5" class="text corners"></textarea><br />
+          <label>* Lorem ipsum dolor sit amet</label><br />
+          <input type="submit" name="submit" id="submit" value="Send" class="button btn_small" />
+        </div><!-- end content -->
+
+	</div><!-- end forms panel -->
+
+</div><!-- end column -->
+
+<!-- start panel right column -->
+<div class="column" style=" float:right; width:49%;">
+	<!-- start panel right panel -->
+	<div class="panel corners">
+    	<!-- start panel right title -->
+		<div class="title corners_top"><h6>Panel right</h6></div><!-- end title -->
+        <!-- start panel right content -->
+		<div class="content">
+          <h1>H1 Tag Heading</h1>
+          <h2>H2 Tag Heading</h2>
+          <h3>H3 Tag Heading</h3>
+          <h4>H4 Tag Heading</h4>
+          <h5>H5 Tag Heading</h5>
+          <h6>H6 Tag Heading</h6>
+          <ul class="check_list float_left">
+            <li>List style</li>
+            <li>List style</li>
+            <li>List style</li>
+            <li>List style</li>
+            <li>List style</li>
+          </ul>
+          <ul class="wrong_list float_left">
+            <li>List style</li>
+            <li>List style</li>
+            <li>List style</li>
+            <li>List style</li>
+            <li>List style</li>
+          </ul>
+          <ol class="number_list float_left">
+            <li>List style</li>
+            <li>List style</li>
+            <li>List style</li>
+            <li>List style</li>
+            <li>List style</li>
+          </ol><br clear="all" />
+    <h6>Link style</h6>
+		<a href="javascript:();">Link style</a>
+</div><!-- end panel right content -->
+
+	</div><!-- end panel right panel -->
+
+</div><!-- end panel right column -->
+
+<div class="clear"></div>
+
+<!-- start column -->
+<div class="column">
+
+	<!-- start info boxes panel -->
+	<div class="panel corners">
+
+		<!-- start title -->
+		<div class="title corners_top"><h6 id="info_boxes">Info Boxes</h6></div><!-- end title -->
+		<div class="content">
+        
+        	<!-- begin boxes -->
+  			<div><a href="javascript:();" title="Succes box" class="box succes corners"><span class="close">&nbsp;</span>This is an success box</a></div>
+  			<div><a href="javascript:();" title="Error box" class="box error corners"><span class="close">&nbsp;</span>This is an error box</a></div>
+  			<div><a href="javascript:();" title="Error box" class="box warning corners"><span class="close">&nbsp;</span>This is an warning box</a></div>
+  			<div><a href="javascript:();" title="Error box" class="box info corners"><span class="close">&nbsp;</span>This is an info box</a></div>
+			<!-- end boxes -->
+
+		</div><!-- end title -->
+	</div><!-- end info boxes panel -->
+
+	<!-- start images panel -->
+	<div class="panel corners">
+
+		<!-- start images title -->
+		<div class="title corners_top"><h6 id="images_panel">Images</h6></div><!-- end images title -->
+		<div class="content">
+   	    	<ul class="img_list">
+            <li><img src="dashboard_files/thumb_photo1.jpg" width="96" height="96" alt="Photo 1" />
+              <div class="imgtoolbox_bg"></div>
+              <div class="imgtoolbox">
+                <a href="images/projects/photo1.jpg" rel="prettyPhoto"><img src="dashboard_files/zoom.png" alt="" width="16" height="16" /></a>
+            	<a href="javascript:();"><img src="dashboard_files/edit.png" alt="" width="16" height="16" /> </a>
+            	<a href="javascript:();"><img src="dashboard_files/delete.png" alt="" width="16" height="16" /></a>
+              </div></li>
+            <li><img src="dashboard_files/thumb_photo2.jpg" width="96" height="96" alt="Photo 2" />
+              <div class="imgtoolbox_bg"></div>
+              <div class="imgtoolbox">
+                <a href="images/projects/photo1.jpg" rel="prettyPhoto"><img src="dashboard_files/zoom.png" alt="" width="16" height="16" /></a>
+            	<a href="javascript:();"><img src="dashboard_files/edit.png" alt="" width="16" height="16" /> </a>
+            	<a href="javascript:();"><img src="dashboard_files/delete.png" alt="" width="16" height="16" /></a>
+              </div></li>
+            <li><img src="dashboard_files/thumb_photo3.jpg" width="96" height="96" alt="Photo 3" />
+              <div class="imgtoolbox_bg"></div>
+              <div class="imgtoolbox">
+                <a href="images/projects/photo1.jpg" rel="prettyPhoto"><img src="dashboard_files/zoom.png" alt="" width="16" height="16" /></a>
+            	<a href="javascript:();"><img src="dashboard_files/edit.png" alt="" width="16" height="16" /> </a>
+            	<a href="javascript:();"><img src="dashboard_files/delete.png" alt="" width="16" height="16" /></a>
+              </div></li>
+            <li><img src="dashboard_files/thumb_photo4.jpg" width="96" height="96" alt="Photo 4" />
+              <div class="imgtoolbox_bg"></div>
+              <div class="imgtoolbox">
+                <a href="images/projects/photo1.jpg" rel="prettyPhoto"><img src="dashboard_files/zoom.png" alt="" width="16" height="16" /></a>
+            	<a href="javascript:();"><img src="dashboard_files/edit.png" alt="" width="16" height="16" /> </a>
+            	<a href="javascript:();"><img src="dashboard_files/delete.png" alt="" width="16" height="16" /></a>
+              </div></li>
+            <li><img src="dashboard_files/thumb_photo5.jpg" width="96" height="96" alt="Photo 5" />
+              <div class="imgtoolbox_bg"></div>
+              <div class="imgtoolbox">
+                <a href="images/projects/photo1.jpg" rel="prettyPhoto"><img src="dashboard_files/zoom.png" alt="" width="16" height="16" /></a>
+            	<a href="javascript:();"><img src="dashboard_files/edit.png" alt="" width="16" height="16" /> </a>
+            	<a href="javascript:();"><img src="dashboard_files/delete.png" alt="" width="16" height="16" /></a>
+              </div></li>
+            <li><img src="dashboard_files/thumb_photo1.jpg" width="96" height="96" alt="Photo 1" />
+              <div class="imgtoolbox_bg"></div>
+              <div class="imgtoolbox">
+                <a href="images/projects/photo1.jpg" rel="prettyPhoto"><img src="dashboard_files/zoom.png" alt="" width="16" height="16" /></a>
+            	<a href="javascript:();"><img src="dashboard_files/edit.png" alt="" width="16" height="16" /> </a>
+            	<a href="javascript:();"><img src="dashboard_files/delete.png" alt="" width="16" height="16" /></a>
+              </div></li>
+            <li><img src="dashboard_files/thumb_photo2.jpg" width="96" height="96" alt="Photo 2" />
+              <div class="imgtoolbox_bg"></div>
+              <div class="imgtoolbox">
+                <a href="images/projects/photo1.jpg" rel="prettyPhoto"><img src="dashboard_files/zoom.png" alt="" width="16" height="16" /></a>
+            	<a href="javascript:();"><img src="dashboard_files/edit.png" alt="" width="16" height="16" /> </a>
+            	<a href="javascript:();"><img src="dashboard_files/delete.png" alt="" width="16" height="16" /></a>
+              </div></li>
+            <li><img src="dashboard_files/thumb_photo4.jpg" width="96" height="96" alt="Photo 4" />
+              <div class="imgtoolbox_bg"></div>
+              <div class="imgtoolbox">
+                <a href="images/projects/photo1.jpg" rel="prettyPhoto"><img src="dashboard_files/zoom.png" alt="" width="16" height="16" /></a>
+            	<a href="javascript:();"><img src="dashboard_files/edit.png" alt="" width="16" height="16" /> </a>
+            	<a href="javascript:();"><img src="dashboard_files/delete.png" alt="" width="16" height="16" /></a>
+              </div></li>
+            <li><img src="dashboard_files/thumb_photo5.jpg" width="96" height="96" alt="Photo 5" />
+              <div class="imgtoolbox_bg"></div>
+              <div class="imgtoolbox">
+                <a href="images/projects/photo1.jpg" rel="prettyPhoto"><img src="dashboard_files/zoom.png" alt="" width="16" height="16" /></a>
+            	<a href="javascript:();"><img src="dashboard_files/edit.png" alt="" width="16" height="16" /> </a>
+            	<a href="javascript:();"><img src="dashboard_files/delete.png" alt="" width="16" height="16" /></a>
+              </div></li>
+            <li><img src="dashboard_files/thumb_photo1.jpg" width="96" height="96" alt="Photo 1" />
+              <div class="imgtoolbox_bg"></div>
+              <div class="imgtoolbox">
+                <a href="images/projects/photo1.jpg" rel="prettyPhoto"><img src="dashboard_files/zoom.png" alt="" width="16" height="16" /></a>
+            	<a href="javascript:();"><img src="dashboard_files/edit.png" alt="" width="16" height="16" /> </a>
+            	<a href="javascript:();"><img src="dashboard_files/delete.png" alt="" width="16" height="16" /></a>
+              </div></li>
+            <li><img src="dashboard_files/thumb_photo2.jpg" width="96" height="96" alt="Photo 2" />
+              <div class="imgtoolbox_bg"></div>
+              <div class="imgtoolbox">
+                <a href="images/projects/photo1.jpg" rel="prettyPhoto"><img src="dashboard_files/zoom.png" alt="" width="16" height="16" /></a>
+            	<a href="javascript:();"><img src="dashboard_files/edit.png" alt="" width="16" height="16" /> </a>
+            	<a href="javascript:();"><img src="dashboard_files/delete.png" alt="" width="16" height="16" /></a>
+              </div></li>
+            <li><img src="dashboard_files/thumb_photo3.jpg" width="96" height="96" alt="Photo 3" />
+              <div class="imgtoolbox_bg"></div>
+              <div class="imgtoolbox">
+                <a href="images/projects/photo1.jpg" rel="prettyPhoto"><img src="dashboard_files/zoom.png" alt="" width="16" height="16" /></a>
+            	<a href="javascript:();"><img src="dashboard_files/edit.png" alt="" width="16" height="16" /> </a>
+            	<a href="javascript:();"><img src="dashboard_files/delete.png" alt="" width="16" height="16" /></a>
+              </div></li>
+            <li><img src="dashboard_files/thumb_photo4.jpg" width="96" height="96" alt="Photo 4" />
+              <div class="imgtoolbox_bg"></div>
+              <div class="imgtoolbox">
+                <a href="images/projects/photo1.jpg" rel="prettyPhoto"><img src="dashboard_files/zoom.png" alt="" width="16" height="16" /></a>
+            	<a href="javascript:();"><img src="dashboard_files/edit.png" alt="" width="16" height="16" /> </a>
+            	<a href="javascript:();"><img src="dashboard_files/delete.png" alt="" width="16" height="16" /></a>
+              </div></li>
+            <li><img src="dashboard_files/thumb_photo5.jpg" width="96" height="96" alt="Photo 5" />
+              <div class="imgtoolbox_bg"></div>
+              <div class="imgtoolbox">
+                <a href="images/projects/photo1.jpg" rel="prettyPhoto"><img src="dashboard_files/zoom.png" alt="" width="16" height="16" /></a>
+            	<a href="javascript:();"><img src="dashboard_files/edit.png" alt="" width="16" height="16" /> </a>
+            	<a href="javascript:();"><img src="dashboard_files/delete.png" alt="" width="16" height="16" /></a>
+              </div></li>
+          </ul>
+       </div><!-- end content -->
+	</div><!-- end images panel -->
+
+</div><!-- end column -->
+
+<!-- begin footer -->
+<div id="footer">
+<!-- begin separator -->
+<hr /><!-- end separator -->
+<div class="float_left">Copyright &copy; 2010 Admin Panelz. All rights reserved.</div>
+<div class="float_right">Powered by <a href="http://www.zmeutz.com/" target="_blank">zmeutz</a>. All rights reserved.</div>
+<div class="clear"></div>
+</div><!-- end footer -->
+
+</div><!-- end container -->
+
+<!-- begin fixed left panel -->
+<div class="fixed_left_panel corners_right">
+	<div class="hidden_left_div">
+		<ul class="list_left">
+			<li><a href="javascript:();">5 new orders</a></li>
+			<li><a href="javascript:();">2 new comments</a></li>
+			<li><a href="javascript:();">1 system error</a></li>
+			<li><a href="javascript:();">1 new message</a></li>
+			<li><a href="javascript:();">8 new subscribers</a></li>
+			<li><a href="javascript:();">4 new articles</a></li>
+			<li><a href="javascript:();">2 new topics</a></li>
+			<li><a href="javascript:();">6 new posts</a></li>
+		</ul></div>
+	<div class="show_left_div right_arrow"></div>
+<div class="clear"></div></div><!-- end fixed left panel -->
+
+	<!-- begin fixed right panel -->
+	<div class="fixed_right_panel fixed_right_panel_hide corners_left">
+		<div class="hidden_right_div">
+			<div class="date float_left">19 / July / 2010</div>
+            <div class="time float_left">18:06</div>
+            <div class="clear"></div>
+            <div class="all_appointments"><a href="javascript:();">View all appointments</a></div>
+            <div class="today_appointments">No appointments today</div>
+			<div id="appointments"></div>
+		</div>
+	<div class="show_right_div left_arrow"></div>
+	  <div class="clear"></div>
+	</div><!-- end fixed right panel -->
+
+<!-- start pretty photo image viewer -->
+		<script type="text/javascript" charset="utf-8">
+		$(document).ready(function(){
+			$(".imgtoolbox a[rel^='prettyPhoto']").prettyPhoto({theme:'facebook'});
+		});
+		</script><!-- end pretty photoo image viewer -->
+</body>
+</html>
